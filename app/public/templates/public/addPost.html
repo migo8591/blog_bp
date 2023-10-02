@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='public/index.css')}}">
+{% endblock %}
+{% include 'navbar.html' %}
+
+
+
+{% block content %}
+<h1>Add Blog Post</h1>
+<br>
+<div class="shadow h-40 p-3 mb-5 bg-body rounded post">
+    <form action="" method="POST">
+        {{form.hidden_tag()}}
+        {{ form.title.label(class="form-label")}}
+        {{form.title(class="form-control")}}
+        <br>
+        {{ form.slug.label(class="form-label")}}
+        {{form.slug(class="form-control")}}
+        <br>
+        {{ form.content.label(class="form-label")}}
+        {{form.content(class="form-control")}}
+        <br>
+        {{form.submit(class="btn btn-primary")}}
+    </form>
+</div>
+
+{% endblock %}
