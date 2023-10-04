@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% include 'navbar.html' %}
+{% block content %}
+
+<div class="shadow p-3 mx-auto mt-5 bg-body rounded">
+    <h2>{{ post.title}}</h2>
+    <small>{{ post.slug}} | {{ post.slug}} </small>
+    <br>
+    <hr>
+    {{ post.content|safe}}
+    <br>
+    <p>{{ post.content }}</p>
+    <hr>
+    <div>
+        <a href="{{url_for('public.index')}}" class="btn btn-primary btn-sm">Back to Posts</a>
+        <a href="{{url_for('public.editPost', id=post.id)}}" class="btn btn-warning btn-sm">Edit Post</a>
+        <a href="{{url_for('public.deletePost', id=post.id)}}" class="btn btn-danger btn-sm">Delete Posts</a>
+        
+
+    </div>
+</div>
+    
+{% endblock %}

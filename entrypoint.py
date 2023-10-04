@@ -5,7 +5,7 @@ from config import config
 configuracion1= config['development']
 configuracion2 = config['production']
 
-myApp=create_app(configuracion2)
+myApp=create_app(configuracion1)
 
 if __name__ == '__main__':
     myApp.run()

@@ -1,20 +1,19 @@
 {% extends 'base.html' %}
-{% block title %} Home {% endblock %}
-{% block meta%}
 
-{% endblock %}
-
-
+{% block title %} Add Post {% endblock %}
+{% block meta%}{% endblock %}
 
 {% block css %}
 <link rel="stylesheet" href="{{url_for('static', filename='public/index.css')}}">
 {% endblock %}
 
+{% include 'navbar.html' %}
 
 
 
 {% block content %}
-<h1>Add Blog Post</h1>
+
+<h2 class="titleMain">Add Your Post</h2>
 <br>
 <div class="shadow h-40 p-3 mb-5 bg-body rounded post">
     <form action="" method="POST">

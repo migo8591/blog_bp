@@ -1,0 +1,14 @@
+body{
+    background: #EBE4D1;
+}
+
+.titleMain{
+    color:#662549;
+    margin: 20px 0px;
+    text-align: center;
+}
+
+.textNavbar{
+    color:var(--color-itemNavbar);
+
+}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %} 
+{% include 'navbar.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='public/index.css')}}">
+{% endblock %}
+
+
+
+{% block content %}
+<h2 class="titleMain">working</h2>
+{% endblock %}

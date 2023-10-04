@@ -32,3 +32,25 @@ def addPost():
             response.headers['Expires'] = '0'
             return response
     return render_template("public/addPost.html", form=form)
+@public_bp.route("/post<int:id>")
+def post(id):
+    post=Posts.query.get_or_404(id)
+    return render_template('public/post.html', post=post)
+@public_bp.route("/editPost<int:id>")
+def editPost(id):
+    post=Posts.query.get_or_404(id)
+    return render_template('public/editPost.html', post=post)
+@public_bp.route("/deletePost<int:id>")
+def deletePost(id):
+    postDelete=Posts.query.get_or_404(id)
+    try:
+        db.session.delete(postDelete)
+        db.session.commit()
+        return redirect(url_for('public.index'))
+    except:
+            flash("Whoops! There was a problem deleting post")      
+            #Grab all the posts from the databases:
+            posts = Posts.query.order_by(Posts.date_posted)
+            return render_template("public/posts.html", posts= posts)
+#https://www.youtube.com/shorts/1bX0xVcoX5w
+    

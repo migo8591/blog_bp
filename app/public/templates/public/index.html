@@ -2,30 +2,30 @@
 
 {% block title %} Home {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+{% endblock %}
+
+
+{% include 'navbar.html' %}
 
 
 
 {% block content %}
-<br>
-<h2 id="title">Post de la comunidad</h2>
+
+<h2 class="titleMain">Post de la comunidad</h2>
     {% for post in publicaciones %}
     <div class="shadow p-3 mb-5 bg-body rounded">
 
-            <h2>{{post.title}}</h2>
+            <h2><a href="{{url_for('public.post', id=post.id)}}">{{post.title}}</a></h2>
 
-            <small>{{ post.date_posted}} | {{ post.slug}} </small><br>
- 
-            <p>{{ post.content }}</p>
-            <br>
-   
+            <small>{{ post.date_posted}} | {{ post.slug}} </small><br>        
     </div>
-{% else %}
+    {% else %}
     <h1>There aren't posts...</h1>
-    {{posts.id}}
     <script>
         var myTitle = document.querySelector("#title")
         myTitle.style.display="none"
     </script>
-{% endfor%}
-
-{% endblock %}
+    {% endfor%}
+  {% endblock %}
