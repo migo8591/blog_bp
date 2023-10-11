@@ -13,16 +13,16 @@
 
 {% block content %}
 
-<h2 class="titleMain">Post de la comunidad</h2>
+<h1 class="titleMain">Posts de la comunidad</h1>
     {% for post in publicaciones %}
     <div class="shadow p-3 mb-5 bg-body rounded">
 
-            <h2><a href="{{url_for('public.post', id=post.id)}}">{{post.title}}</a></h2>
+            <h3><a href="{{url_for('public.post', id=post.id)}}">{{post.title}}</a></h3>
 
             <small>{{ post.date_posted}} | {{ post.slug}} </small><br>        
     </div>
     {% else %}
-    <h1>There aren't posts...</h1>
+    <h2>There aren't posts...</h2>
     <script>
         var myTitle = document.querySelector("#title")
         myTitle.style.display="none"

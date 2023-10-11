@@ -1,4 +1,4 @@
-from flask import render_template,request, flash, redirect, url_for
+from flask import render_template,request, flash, redirect, url_for, session
 from ..extensions import db
 from .webforms import PostForm
 from app.model import Posts
@@ -36,10 +36,23 @@ def addPost():
 def post(id):
     post=Posts.query.get_or_404(id)
     return render_template('public/post.html', post=post)
-@public_bp.route("/editPost<int:id>")
+@public_bp.route("/editPost<int:id>", methods=['GET','POST'])
 def editPost(id):
+    form=PostForm()
     post=Posts.query.get_or_404(id)
-    return render_template('public/editPost.html', post=post)
+    if form.validate_on_submit():
+        post.title=form.title.data
+        post.slug=form.slug.data
+        post.content=form.content.data
+        db.session.add(post)
+        db.session.commit()
+        flash("Post ha sido actualizado")
+        return redirect(url_for('public.post', id=id))
+    else:
+        form.title.data=post.title
+        form.slug.data=post.slug
+        form.content.data=post.content
+        return render_template('public/editPost.html',form=form)
 @public_bp.route("/deletePost<int:id>")
 def deletePost(id):
     postDelete=Posts.query.get_or_404(id)

@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+{% include 'navbar.html' %}
+{% block content %}
+<br>
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    
+        <strong>{{ message }} </strong> 
+    </div>
+{% endfor %}
+<br>
+<h1>login</h1>
+<div class="shadow p-3 mb-5 bg-body rounded">
+<h2>login</h2>
+</div>
+{%for usuario in usuarios %}
+<tr>
+    <td>
+        {{usuario.id}} - {{usuario.name}} - {{usuario.email}} - {{usuario.password_hash}}
+    </td><br>
+
+
+</tr>
+{% endfor %}
+{% endblock %}
