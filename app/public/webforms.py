@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired
 
 class PostForm(FlaskForm):
     form_id = HiddenField('Form ID', default=int(time.time()))
-    title = StringField('Titulo', validators=[DataRequired()])
+    title = StringField('Titulo', validators=[DataRequired()], render_kw={"autofocus":True})
     slug = StringField("Slug", validators=[DataRequired()])
     content = TextAreaField("Contenido")
     submit = SubmitField("Submit")

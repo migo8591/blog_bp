@@ -1,8 +1,9 @@
 from .extensions import db
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
-class Posts(db.Model):
+class Posts(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))
     content = db.Column(db.Text)

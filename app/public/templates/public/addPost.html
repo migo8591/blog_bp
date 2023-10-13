@@ -19,17 +19,32 @@
     <form action="" method="POST">
         {{form.hidden_tag()}}
         {{ form.title.label(class="form-label")}}
-        {{form.title(class="form-control focus")}}
+        {{form.title(id="myTitulo", class="form-control")}}
         <br>
         {{ form.slug.label(class="form-label")}}
-        {{form.slug(class="form-control")}}
+        {{form.slug(id="mySlug", class="form-control")}}
         <br>
         {{ form.content.label(class="form-label")}}
-        {{form.content(class="form-control")}}
+        {{form.content(id="myContent", class="form-control")}}
         <br>
         {{form.submit(class="btn btn-primary")}}
     </form>
+    <script>
+        // var mySubmit = document.querySelector("#mySubmit")
+        // mySubmit.addEventListener("click", ()=>{
+        //     document.getElementById("myInput").value=""
+        // })
+        window.onload = function() {
+        var inputTitulo = document.getElementById("myTitulo");  // Reemplaza "name" con el id del campo de entrada.
+        inputTitulo.focus();
+        inputTitulo.value = '';  
+        var inputSlug = document.getElementById("mySlug")
+        inputSlug.value = '';  
+        var inputContent = document.getElementById("myContent")
+        inputContent.value = '';  
+    }
 
+    </script>
 </div>
 
 {% endblock %}
