@@ -7,11 +7,9 @@ class Posts(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))
     content = db.Column(db.Text)
-    #author = db.Column(db.String(255))
     date_posted = db.Column(db.DateTime, default= datetime.utcnow)
     slug = db.Column(db.String(255))
-    # Foreing key to link Users(refer to primary of the user)
-    # poster_id= db.Column(db.Integer, db.ForeignKey('users.id'))
+    poster_id= db.Column(db.Integer, db.ForeignKey('users.id'))
 
 class Users(db.Model, UserMixin):
     id=db.Column(db.Integer, primary_key=True )
@@ -22,8 +20,7 @@ class Users(db.Model, UserMixin):
     # profile_pic=db.Column(db.String(120), nullable=True)
     date_added=db.Column(db.DateTime, default=datetime.utcnow)
     password_hash = db.Column(db.String(150))
-    #User can have many posts
-    # posts = db.relationship('Posts', backref='poster')
+    posts = db.relationship('Posts', backref='poster')
 
     # The serialize method converts the object to a dictionary
     def serialize(self):

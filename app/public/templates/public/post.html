@@ -11,7 +11,7 @@
 {% endfor %}
 <div class="shadow p-3 mx-auto mt-5 bg-body rounded">
     <h2>{{ post.title}}</h2>
-    <small>{{ post.slug}} | {{ post.slug}} </small>
+    <small><b>By:</b> {{ post.poster.name}} | <b>{{ post.slug}} </b></small>
     <br>
     <hr>
     {{ post.content|safe}}

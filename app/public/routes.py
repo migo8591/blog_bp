@@ -1,5 +1,5 @@
 from flask import render_template,request, flash, redirect, url_for, session
-from flask_login import login_required
+from flask_login import login_required, current_user
 from ..extensions import db
 from .webforms import PostForm
 from app.model import Posts
@@ -20,7 +20,8 @@ def addPost():
         # Verificar el identificador único para evitar envíos duplicados
         form_id = request.form['form_id']
         if form_id != str(int(time.time())):
-            post = Posts(title=form.title.data, content=form.content.data,slug=form.slug.data)
+            poster = current_user.id
+            post = Posts(title=form.title.data, content=form.content.data,poster_id=poster,slug=form.slug.data)
             form.title.data = ''
             form.content.data = ''
             form.slug.data = ''
