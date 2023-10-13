@@ -1,4 +1,5 @@
 from flask import render_template,request, flash, redirect, url_for, session
+from flask_login import login_required
 from ..extensions import db
 from .webforms import PostForm
 from app.model import Posts
@@ -12,6 +13,7 @@ def index():
     return render_template("public/index.html", publicaciones=posts)
 
 @public_bp.route("/addPost", methods=['GET', 'POST'])
+@login_required
 def addPost():
     form = PostForm()
     if form.validate_on_submit():
@@ -26,7 +28,7 @@ def addPost():
             db.session.add(post)
             db.session.commit()
             flash("Blog Post Submitted Successfully!")
-            response = redirect(url_for('public.index')) 
+            response = redirect(url_for('public.post', id=post.id)) 
             response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
             response.headers['Pragma'] = 'no-cache'
             response.headers['Expires'] = '0'

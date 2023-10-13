@@ -1,5 +1,5 @@
 from flask import Flask 
-from flask_login import LoginManager, login_user, login_required, logout_user, current_user
+from flask_login import LoginManager, current_user
 from .extensions import db, bcrypt
 from flask_migrate import Migrate
 from app.public import public_bp
@@ -25,3 +25,7 @@ def load_user(user_id):
 def create_app(config):
     app.config.from_object(config)
     return app
+@app.context_processor
+def inject_user():
+    user = current_user  # Obtiene el usuario actual si está autenticado
+    return dict(user=user)  # Pasamos el usuario al contexto global

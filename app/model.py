@@ -13,7 +13,7 @@ class Posts(db.Model, UserMixin):
     # Foreing key to link Users(refer to primary of the user)
     # poster_id= db.Column(db.Integer, db.ForeignKey('users.id'))
 
-class Users(db.Model):
+class Users(db.Model, UserMixin):
     id=db.Column(db.Integer, primary_key=True )
     username = db.Column(db.String(20), nullable=False, unique=True)
     name=db.Column(db.String(200), nullable=False)

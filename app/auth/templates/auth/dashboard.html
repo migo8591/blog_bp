@@ -1,8 +1,56 @@
 {% extends 'base.html' %} 
+{% block meta %}{% endblock %}
+{% block title %}"Dashboard"{% endblock %}
 {% include 'navbar.html' %}
 {% block content %}
 <h1>Dashboard</h1>
-<br>
-<h1>You are logged in</h1>
+{% for message in get_flashed_messages() %}
 
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="flash-message">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+<br>
+<!-- {% if login_successful %}
+<div class="alert alert-success">
+    ¡Bienvenido amigos!
+</div>
+{% endif %} -->
+<div class="card">
+    <div class="card-body">
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <strong>Name: </strong>{{current_user.name}}<br>
+                    <strong>Username: </strong>{{current_user.username}}<br>
+                    <strong>Email: </strong>{{current_user.email}}<br>
+                    <strong>Date Joined: </strong>{{current_user.date_added}}<br>
+                    <strong>About me: </strong>{{current_user.about_me}}<br>
+                    <div class="mt-2">
+                        <a href="{{url_for('auth.update_user', id=current_user.id)}}" class="btn btn-warning btn-sm">Edit Profile</a>
+                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                    </div>
+      
+                </div>
+                <div class="col-4">
+                    <img src="{{url_for('static', filename='img/picture.png')}}" alt="foto del perfil" width="200" align="right" >
+                </div>
+            </div>
+        </div>
+        <!-- <p class="card-text">Text</p> -->
+
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script defer>
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const loginSuccess = urlParams.get("login_success");
+        if (loginSuccess === "True") {
+            alert("¡Bienvenido!");
+        }
+    });
+</script>
 {% endblock %}

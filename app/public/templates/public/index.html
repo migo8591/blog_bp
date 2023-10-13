@@ -16,9 +16,7 @@
 <h1 class="titleMain">Posts de la comunidad</h1>
     {% for post in publicaciones %}
     <div class="shadow p-3 mb-2 bg-body rounded">
-
-            <h3><a href="{{url_for('public.post', id=post.id)}}">{{post.title}}</a></h3>
-
+            <h4><a href="{{url_for('public.post', id=post.id)}}">{{post.title}}</a></h4>
             <small>{{ post.date_posted}} | {{ post.slug}} </small>
     </div>
     {% else %}

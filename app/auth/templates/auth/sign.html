@@ -19,8 +19,9 @@
             <span style="color: red;">{{ error }}</span>
         {% endfor %}
         <br>
-        {{ form.about_me.label(class="form-label")}}
-        {{form.about_me(class="form-control")}}
+        {{ form.aboutme.label(class="form-label")}}
+        {{form.aboutme(class="form-control")}}
+        <br>
         {{ form.password_hash.label(class="form-label")}}
         {{form.password_hash(class="form-control")}}
         {% for error in form.password_hash.errors %}
