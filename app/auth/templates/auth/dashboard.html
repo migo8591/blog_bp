@@ -1,15 +1,14 @@
 {% extends 'base.html' %} 
 {% block meta %}{% endblock %}
-{% block title %} Perfil {% endblock %}
+{% block title %} Perfil {{current_user.username}} {% endblock %}
 {% include 'navbar.html' %}
 {% block content %}
-<h1 class="titleMain"> Perfil</h1>
+<h1 class="titleMain"> Profile usuario:  {{current_user.username}}</h1>
 {% for message in get_flashed_messages() %}
-
-<div class="alert alert-success alert-dismissible fade show" role="alert" id="flash-message">
-    {{ message }}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+    <div id="flash-message" class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>{{ message }} </strong> 
+    </div>
 {% endfor %}
 <br>
 <!-- {% if login_successful %}

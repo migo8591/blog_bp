@@ -16,9 +16,8 @@ def login():
         if user:
             if bcrypt.check_password_hash(user.password_hash, form.password.data):
                 login_user(user)
-                # flash("Login Successfull!!")
-
-                return redirect(url_for('auth.dashboard', login_success=True))
+                flash("Login Successfull!!")
+                return redirect(url_for('auth.dashboard'))
             else:
                 flash("Wrong Password - Try Again!")
         else:
