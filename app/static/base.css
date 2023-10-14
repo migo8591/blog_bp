@@ -8,12 +8,34 @@ body{
     text-align: center;
 }
 
-.textNavbar{
-    color:var(--color-itemNavbar);
+#titulo{
+    color:brown
+}
+.li_NavbarI{
+    color:var(--color-itemNavbarI);
+    font-weight: 500;
+    font-size: 1.3rem;
 
 }
-.textNavbarII{
+.li_NavbarII{
     color:var(--color-itemNavbarII);
     font-weight: 500;
-
 }
+.li_NavbarIII{
+    color:var(--color-itemNavbarIII);
+    font-weight: 800;
+}
+.li_NavbarIV{
+    color:var(--color-itemNavbarI);
+    font-weight: 500;
+}
+#ckeditor1{
+    width: 300px; 
+    height: 30px;
+}
+#ckeditor2{
+    width: 300px; 
+    height: 10%;
+}
+
+

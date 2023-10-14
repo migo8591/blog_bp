@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %} Admin {% endblock %}
+
+{% include 'navbar.html' %}
+
+{% block content %}
+{% for message in get_flashed_messages() %}
+    <div id="flash-message" class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>{{ message }} </strong> 
+    </div>
+{% endfor %}
+<h1 class="titleMain">Admin</h1>
+<h3>Usuarios:</h3>
+<table class="table table-hover table-bordered table-striped">
+    {% for user in users %}
+        <tr>
+            <td>
+                {{user.id}}. <a href="#">{{user.name}} </a>-{{user.username}} - {{user.email}}- PW: {{user.password_hash}} <a href="{{url_for('admin.delete', id=user.id)}}">Delete</a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}
+

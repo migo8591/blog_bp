@@ -12,9 +12,8 @@
 
 
 {% block content %}
-<br>
 {% for message in get_flashed_messages() %}
-    <div id="flash-message" class="alert alert-warning alert-dismissible fade show" role="alert">
+    <div id="flash-message" class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <strong>{{ message }} </strong> 
     </div>

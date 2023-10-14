@@ -2,14 +2,18 @@ from flask import Flask
 from flask_login import LoginManager, current_user
 from .extensions import db, bcrypt
 from flask_migrate import Migrate
+from flask_ckeditor import CKEditor
 from app.public import public_bp
 from app.auth import auth_bp
+from app.admin import admin_bp
 from .model import Users
 from config import DATABASE_CONNECTION_URI
 app = Flask(__name__)
+ckeditor = CKEditor(app)
 bcrypt.init_app(app)
 app.register_blueprint(public_bp)
 app.register_blueprint(auth_bp)
+app.register_blueprint(admin_bp) 
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_CONNECTION_URI
 db.init_app(app)
 migrate = Migrate(app, db)

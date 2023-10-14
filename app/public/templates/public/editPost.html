@@ -8,7 +8,8 @@
 
 
 {% block content %}
-<h2>Edit Post...</h2>
+
+<h2 class="titleMain">Edit Post...</h2>
 <div class="shadow p-3 mb-5 bg-body rounded">
     <form action="" method="POST">
         {{form.hidden_tag()}}
@@ -19,10 +20,24 @@
         {{form.slug(class="form-control")}}
         <br>
         {{ form.content.label(class="form-label")}}
-        {{form.content(class="form-control")}}
+        {{form.content(id=ckeditor1, class="form-control")}}
         <br>
         {{form.submit(class="btn btn-primary")}}
     </form>
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='content', class="ckeditor") }}
+    <script>
+        CKEDITOR.replace('content')
+
+        var editor = CKEDITOR.instances.editor;
+
+        // Define el ancho y la altura deseados
+        var nuevoAncho = '300px';
+        var nuevaAltura = '5px';
+
+        // Establece el nuevo tamaño
+        editor.resize(nuevoAncho, nuevaAltura);
+    </script>
 
 
 </div>

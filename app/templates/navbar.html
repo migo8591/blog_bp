@@ -5,7 +5,7 @@
       <!-- <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top"> -->
       <img src="{{url_for('static', filename='img/mate.jpg')}}" alt="" width="72" height="57">
     </a>
-    <a class="navbar-brand textNavbar " href="{{url_for('public.index')}}">Enseñanza de la matematica</a>
+    <a class="navbar-brand li_NavbarI" href="{{url_for('public.index')}}"><center>Enseñanza de la</center><center>Matemática</center></a>
       <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -13,26 +13,33 @@
       <div class="collapse navbar-collapse" id="collapsibleNavId">
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0 textNavbar">
               <li class="nav-item">
-                  <a class="nav-link textNavbarII" href="{{url_for('public.addPost')}}">Add Post</a>
+                  <a class="nav-link li_NavbarII" href="{{url_for('public.addPost')}}">Add Post</a>
               </li>
+              {% if current_user.is_authenticated %}
               <li class="nav-item">
-                  <a class="nav-link textNavbarII" href="{{url_for('auth.dashboard')}}">Dashboard</a>
+                  <a class="nav-link li_NavbarII" href="{{url_for('auth.dashboard')}}">Perfil</a>
               </li>
+              {% endif %}
+              {% if current_user.id == 1 %}
+              <li class="nav-item">
+                <a class="nav-link li_NavbarIII" href="{{url_for('admin.admin')}}">Admin</a>
+              {% endif %}
+            </li>
           </ul>
           <ul class="navbar-nav ms-auto">
             {% if current_user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link textNavbarII" href="{{url_for('auth.dashboard')}}">Usuario: {{user.username}}</a>
+              <a class="nav-link li_NavbarIV" href="{{url_for('auth.dashboard')}}">Usuario: {{user.username}}</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link textNavbar" href="{{url_for('auth.logout')}}">Logout</a>
+            <li class="nav-item active">
+              <a class="nav-link li_NavbarIV" href="{{url_for('auth.logout')}}">Logout</a>
             </li>
             {% else %}
             <li class="nav-item">
-              <a class="nav-link textNavbar" href="{{url_for('auth.login')}}">Login</a>
+              <a class="nav-link li_NavbarIV" href="{{url_for('auth.login')}}">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link textNavbar" href="{{url_for('auth.sign')}}">Register</a>
+              <a class="nav-link li_NavbarIV" href="{{url_for('auth.sign')}}">Register</a>
             </li>
 
             {% endif %}

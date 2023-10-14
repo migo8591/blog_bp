@@ -14,8 +14,7 @@
 {% block content %}
 
 <h2 class="titleMain">Add Your Post</h2>
-<br>
-<div class="shadow h-40 p-3 mb-5 bg-body rounded post">
+<div class="shadow h-10 p-3 mb-5 bg-body rounded post">
     <form action="" method="POST">
         {{form.hidden_tag()}}
         {{ form.title.label(class="form-label")}}
@@ -25,10 +24,12 @@
         {{form.slug(id="mySlug", class="form-control")}}
         <br>
         {{ form.content.label(class="form-label")}}
-        {{form.content(id="myContent", class="form-control")}}
+        {{form.content(id="ckeditor2", class="form-control")}}
         <br>
         {{form.submit(class="btn btn-primary")}}
     </form>
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='content') }}
     <script>
         // var mySubmit = document.querySelector("#mySubmit")
         // mySubmit.addEventListener("click", ()=>{
