@@ -1,12 +1,11 @@
 {% block css %}{% endblock %}
-
-
-
-
-
-<nav  class="navbar navbar-expand-sm navbar-dark" style="background-color: var(--color-navbar);">
-    <div class="container">
-      <a class="navbar-brand textNavbar " href="{{url_for('public.index')}}">Enseñanza de la matematica</a>
+<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: var(--color-navbar);">
+  <div class="container">
+    <a class="navbar-brand" href="{{url_for('public.index')}}">
+      <!-- <img src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top"> -->
+      <img src="{{url_for('static', filename='img/mate.jpg')}}" alt="" width="72" height="57">
+    </a>
+    <a class="navbar-brand textNavbar " href="{{url_for('public.index')}}">Enseñanza de la matematica</a>
       <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
           aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -40,6 +39,10 @@
             
 
           </ul>
-      </div>
-</div>
+
+  </div>
 </nav>
+
+
+
+

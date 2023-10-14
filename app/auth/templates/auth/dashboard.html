@@ -1,9 +1,9 @@
 {% extends 'base.html' %} 
 {% block meta %}{% endblock %}
-{% block title %}"Dashboard"{% endblock %}
+{% block title %} Perfil {% endblock %}
 {% include 'navbar.html' %}
 {% block content %}
-<h1>Dashboard</h1>
+<h1 class="titleMain"> Perfil</h1>
 {% for message in get_flashed_messages() %}
 
 <div class="alert alert-success alert-dismissible fade show" role="alert" id="flash-message">
@@ -44,13 +44,5 @@
 </div>
 {% endblock %}
 {% block js %}
-<script defer>
-    document.addEventListener("DOMContentLoaded", function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const loginSuccess = urlParams.get("login_success");
-        if (loginSuccess === "True") {
-            alert("¡Bienvenido!");
-        }
-    });
-</script>
+
 {% endblock %}

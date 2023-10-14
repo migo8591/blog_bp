@@ -5,11 +5,12 @@ from flask_migrate import Migrate
 from app.public import public_bp
 from app.auth import auth_bp
 from .model import Users
+from config import DATABASE_CONNECTION_URI
 app = Flask(__name__)
 bcrypt.init_app(app)
 app.register_blueprint(public_bp)
 app.register_blueprint(auth_bp)
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:rebHaraya314@localhost/blog_matematica"
+app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_CONNECTION_URI
 db.init_app(app)
 migrate = Migrate(app, db)
 with app.app_context():
